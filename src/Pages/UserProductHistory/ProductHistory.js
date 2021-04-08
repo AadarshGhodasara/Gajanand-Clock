@@ -25,31 +25,36 @@ const [totalPrice,setTotalPrice] = useState(0)
       const  CurrentUser = firebase.auth().currentUser;
       // const temp = new Date()
       if(productStatus!=='Order dilivered' && productStatus!=='Order Cancel'){
-        Swal.fire({
-          title: 'Are you sure cancel Order?',
-          text: "You won't be able to revert this order!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, cancel it!'
-        }).then((result) => {
-          if(result.isConfirmed){
-            firebase.database().ref(`Users/${id}/History/${productName}`).remove().then(()=>{
-              firebase.database().ref(`Users/XryKr3kHIdYbl8dmwccR23wmdop1/Orders/${id}/${productName}`).remove().then(()=>{
-                Swal.fire(
-                  'Order Cancel!',
-                  'Your Order has been Canceled.',
-                  'success'
-                )
+        if(productStatus!=='Order In Transition'){
+          Swal.fire({
+            title: 'Are you sure cancel Order?',
+            text: "You won't be able to revert this order!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, cancel it!'
+          }).then((result) => {
+            if(result.isConfirmed){
+              firebase.database().ref(`Users/${id}/History/${productName}`).remove().then(()=>{
+                firebase.database().ref(`Users/XryKr3kHIdYbl8dmwccR23wmdop1/Orders/${id}/${productName}`).remove().then(()=>{
+                  Swal.fire(
+                    'Order Cancel!',
+                    'Your Order has been Canceled.',
+                    'success'
+                  )
+                }).catch((error)=>{
+                  console.log(error)
+                });
               }).catch((error)=>{
                 console.log(error)
               });
-            }).catch((error)=>{
-              console.log(error)
-            });
-          }
-        })
+            }
+          })
+        }else{
+          console.log('NO CANCLE')
+        }
+
       }else{
         Swal.fire({
           title: 'Are you sure delete Order from history?',

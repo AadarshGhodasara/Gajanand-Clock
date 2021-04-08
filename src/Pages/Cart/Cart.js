@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import Header from '../AddPhoto/AddPhotoHeader'
 import './Cart.css'
+import axios from 'axios'
 export default function Cart() {
 // let Quantity=0
 const { id } = useParams();
@@ -16,9 +17,15 @@ const [isUpdateAddress,setIsUpdateAddress] = useState(false)
 const [address,setAddress] = useState([])
 const [addressLine1,setAddressLine1] = useState('-')
 const [addressLine2,setAddressLine2] = useState('-')
-const [country,setCountry] = useState('-')
-const [state,setState] = useState('-')
+const [country,setCountry] = useState('India')
+const [state,setState] = useState('Gujarat')
 const [zipCode,setZipCode] = useState('-')
+const [phoneNumber,setPhoneNumber] = useState('-')
+const [landmark ,setLandmark ] = useState('-')
+const [city ,setCity ] = useState('-')
+const [arrayOfPostOffice,setArrayOfPostOffice] = useState([])
+const [landmarkOptions,setLandmarkOptions] = useState([])
+// let landmarkOptions = []
 // const [addressLine1,setAddressLine1] = useState('')
 // const [changeNoOfQuantity,setChangeNoOfQuantity] = useState(0)
 const [totalPrice,setTotalPrice] = useState(0)
@@ -54,6 +61,26 @@ const [totalPrice,setTotalPrice] = useState(0)
             })
         // }
     },[])
+
+    useEffect(()=>{
+      let temp = []
+      if(arrayOfPostOffice.length){
+        setCity(arrayOfPostOffice[0].Block)
+        arrayOfPostOffice.map(val=>{
+          if(val.BranchType === 'Sub Post Office'){
+            temp.push(val.Name)
+          }
+        })
+        setLandmarkOptions(temp)
+      }
+    },[arrayOfPostOffice])
+
+    useEffect(()=>{
+      if(!zipCode){
+        setCity('')
+        setLandmarkOptions([])
+      }
+    },[zipCode])
 
     const handleRemoveItem = (productName,productPrice,noOfQuantity) => {
       // const  CurrentUser = firebase.auth().currentUser;
@@ -139,21 +166,32 @@ const [totalPrice,setTotalPrice] = useState(0)
       if(addressLine2 === '-' || addressLine2===''){
         setAddressLine2('')
       }
-      if(country === '-' || country===''){
-        setCountry('')
-      }
-      if(state === '-' || state===''){
-        setState('')
-      }
       if(zipCode === '-' || zipCode===''){
         setZipCode('') 
       }
-      if( addressLine1 && addressLine1!=='-' && addressLine2 && addressLine2!=='-' && country && country!=='-' && state && state!=='-' && zipCode && zipCode!=='-'){
+      if(phoneNumber === '-' || phoneNumber===''){
+        setPhoneNumber('') 
+      }
+      if(landmark === '-' || landmark===''){
+        setLandmark('') 
+      }
+      // console.log('+++++===>',addressLine1,'==>',addressLine2,'==>',zipCode,'==>',phoneNumber,'==>',landmark,'==>',phoneNumber,'=>',city)
+      if( 
+          addressLine1 && addressLine1!=='-' 
+          && addressLine2 && addressLine2!=='-' 
+          && zipCode && zipCode!=='-' 
+          && phoneNumber && phoneNumber!=='-' 
+          && landmark && landmark!=='-'
+          && city && city!=='-'
+        ){
         // const  CurrentUser = firebase.auth().currentUser;
         firebase.database().ref(`Users/${id}/Address`).set({
           address_line_1:addressLine1,
           address_line_2:addressLine2,
+          phoneNumber:phoneNumber,
           zipcode:zipCode,
+          Landmark:landmark,
+          City:city,
           state:state,
           country:country
         }).then(()=>{
@@ -188,6 +226,7 @@ const [totalPrice,setTotalPrice] = useState(0)
 
     return (
         <>
+        {console.log('***********************************')}
         <Header text={'Cart'} clock={true} />
         <div className="pb-5" style={{fontFamily:'Montserrat,sans-serif'}}>
         <div className="container-fluid">
@@ -280,9 +319,10 @@ const [totalPrice,setTotalPrice] = useState(0)
                   <hr className="mb-4"></hr>
                   <h6>{address.address_line_1}</h6>
                   <h6>{address.address_line_2? address.address_line_2 : null}</h6>
-                  <h6>{address.state}</h6>
-                  <h6>{address.country}</h6>
+                  <div className='d-flex'><h6>{address.Landmark}</h6><h6>,{' '}{address.City}</h6></div>
+                  <div className='d-flex'><h6>{address.state}</h6><h6>,{' '}{address.country}</h6></div>
                   <h6>{address.zipcode}</h6>
+                  <h6>Ph: 0{address.phoneNumber}</h6>
                 </div>
                </div>
               </>
@@ -302,18 +342,55 @@ const [totalPrice,setTotalPrice] = useState(0)
                 </div>
                 <div className="row">
                     <div className="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select className="custom-select d-block w-100" defaultValue={country!=='-'?country:''} onChange={(e)=>setCountry(e.target.value)} id="country" required="">
-                            <option value="">Choose...</option>
-                            <option value="India">India</option>
-                        </select>
-                        {!country ? 
-                        <div className="text-danger"> Please select a valid country. </div>
+                        <label for="phoneNumber">Phone No.</label>
+                        <input type="number" value={phoneNumber!=='-'?phoneNumber:''} className="form-control" id="zip" onChange={(e)=>setPhoneNumber(e.target.value)} placeholder="" required="" />
+                        {!phoneNumber ? 
+                        <div className="text-danger"> Phone Number required. </div>
                         : null }
+                    </div>
+                    <div className="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" value={zipCode!=='-'?zipCode:''} className="form-control" id="zip" 
+                        onChange={(e)=>{
+                          setZipCode(e.target.value)
+                          axios(`https://api.postalpincode.in/pincode/${e.target.value}`).then((result)=>{
+                            console.log('===???===>',result.data,'------------>',result.data[0].Status)  
+                            if(result.data[0].Status === "Success"){
+                              console.log('===???===>',result.data[0].PostOffice)
+                              setArrayOfPostOffice(result.data[0].PostOffice)
+                            }
+                          })
+                        }} placeholder="" required="" />
+                        {!zipCode ? 
+                        <div className="text-danger"> Zip code required. </div>
+                        : null }
+                    </div> 
+                    <div className="col-md-4 mb-3">
+                        <label for="zip">Landmark</label>
+                        <select className="custom-select d-block w-100"  defaultValue={landmark!=='-'?landmark:''} onChange={(e)=>setLandmark(e.target.value)} id="country" required="">
+                            <option value="">Choose...</option>
+                            {console.log('LOL------++++>',landmarkOptions.length)}
+                            {landmarkOptions.length ? 
+                              landmarkOptions.map((val)=>(
+                                <option value={`${val}`} key={val}>{val}</option>
+                              ))
+                            : null }
+                        </select>
+                        {/* <input type="text" value={district!=='-'?district:''} className="form-control" id="zip" onChange={(e)=>setZipCode(e.target.value)} placeholder="" required="" /> */}
+                        {!landmark ? 
+                        <div className="text-danger"> Distric required. </div>
+                        : null }
+                    </div> 
+                </div>
+                <div className="row">
+                    <div className="col-md-4 mb-3">
+                        <label for="address2">City</label>
+                        <input type="text" value={city!=='-'?city:''} disabled={true} onChange={(e)=>setCity(e.target.value)} className="form-control" id="city" placeholder="City Name" />
+                        {/* {!city ?  <div className="text-danger"> City required. </div>: null } */}
                     </div>
                     <div className="col-md-4 mb-3">
                         <label for="state">State</label>
-                        <select className="custom-select d-block w-100" defaultValue={state!=='-'?state:''} onChange={(e)=>setState(e.target.value)} id="state" required="">
+                        <select className="custom-select d-block w-100" disabled={true} defaultValue={state!=='-'?state:'Gujarat'} onChange={(e)=>setState(e.target.value)} id="state" required="">
                             <option value="">Choose...</option>
                             <option value="Gujarat">Gujarat</option>
                         </select>
@@ -321,13 +398,16 @@ const [totalPrice,setTotalPrice] = useState(0)
                         <div className="text-danger"> Please provide a valid state. </div>
                         : null }
                     </div>
-                    <div className="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" value={zipCode!=='-'?zipCode:''} className="form-control" id="zip" onChange={(e)=>setZipCode(e.target.value)} placeholder="" required="" />
-                        {!zipCode ? 
-                        <div className="text-danger"> Zip code required. </div>
+                    <div className="col-md-4 mb-3">
+                        <label for="country">Country</label>
+                        <select className="custom-select d-block w-100" disabled={true} defaultValue={country!=='-'?country:'India'} onChange={(e)=>setCountry(e.target.value)} id="country" required="">
+                            <option value="">Choose...</option>
+                            <option value="India">India</option>
+                        </select>
+                        {!country ? 
+                        <div className="text-danger"> Please select a valid country. </div>
                         : null }
-                    </div> 
+                    </div>
                 </div>
               {isUpdateAddress ? 
               <div className='d-flex justify-content-around'>
