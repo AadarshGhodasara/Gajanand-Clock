@@ -9,13 +9,14 @@ import { FormControl , FormLabel } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import {setLogin} from '../../Components/action/setLogged';
 import Swal from 'sweetalert2';
+import Link from '@material-ui/core/Link';
 
 const Login = () => {
     const [ email , setEmail ] = useState('');
     const [ pass , setPass ] = useState('');
     const dispatch = useDispatch();
     
-    function  submitLogin(){
+    function  handleLoginEvent(){
         // console.log(pass,'==',email)
         fire.auth().signInWithEmailAndPassword(email,pass)
         .then(
@@ -34,6 +35,8 @@ const Login = () => {
                         'Successful Login...',
                         'success'
                       ).then(()=>{
+                        //   console.log('USER===>',CurrentUser.uid)
+                          window.localStorage.setItem('userId',CurrentUser.uid);
                         // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
                             dispatch(setLogin());    
                         // }  
@@ -67,7 +70,7 @@ const Login = () => {
                     </Avatar>
                     </div>
 
-                    <label className='form-header'>Administrator Login</label>
+                    <label className='form-header'>Login</label>
                     <div className='inputTag'>
                         <FormLabel className='label-css'>Email address</FormLabel>
                         <FormControl onChange={(e)=> setEmail(e.target.value)} type="email" size='lg' placeholder="Email" />
@@ -77,11 +80,16 @@ const Login = () => {
                         <FormControl onChange={(e)=> setPass(e.target.value)} type="password" size='lg' placeholder="Password" />
                     </div>
                     <div className='inputTag' style={{marginTop:'4%'}}>
-                        <Button variant="contained" fullWidth={true} color="primary" onClick={submitLogin}>
+                        <Button variant="contained" fullWidth={true} color="primary" onClick={handleLoginEvent}>
                             SIGN IN
                         </Button>
                         {/* <input type="Submit" onClick={submitLogin}  /> */}
                     </div>
+                    <div className='signUpLabelTag'>
+                            <Link href="/signUp" variant="body2">
+                                Don't have an account? Sign Up
+                            </Link>
+                        </div>
                 </div>
             </div>
             </div>

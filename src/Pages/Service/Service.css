@@ -1,7 +1,8 @@
 .ServiceBody{
-    background-color: black;
+    background-color: #f4f5f7;
     display: flex;
-    height: 100vh;
+    /* height: 80vh; */
+    width: 100vw;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -12,28 +13,26 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 1%;
     margin-top: 2%;
-    /* background-color: red; */
 }
 .service-header-text{
     font-size: calc(20px + 2vmin);
-    color: white;
+    color: #000;
 }
 .service-tag{
     display: flex;
-    /* background-color:aqua; */
-    height: 65vh;
+    height: 60vh;
     width: 100%;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+    margin-bottom: 3%;
 }
 .box-tag{
     background-color: #2e2d2d;
-    width: 25vw;
-    height: 40vh;
+    width: 350px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -45,8 +44,7 @@
     background-color: #0099ff;
 }
 .box-img-tag{
-    /* background-color: aqua; */
-    height: 15vh;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,19 +55,22 @@
     width: 100% ;
 }
 .service-text-tag{
-    height: 25vh;
-    /* background-color: red; */
+    height: 60%;
 }
 .text-css{
    font-size: 1vw; 
-   text-align: center;
+   padding: 0% 5%;
+   text-align: justify;
 }
 .service-box-header{
     display: flex;
     justify-content: center;
     font-size: 1.5vw;
 }
-
+.service-header-hr{
+    margin-left:1%;
+    width:6%;
+  }
 
 @media screen and (max-width: 600px) {
     .ServiceBody{
@@ -78,64 +79,66 @@
     .service-tag{
         height: 80vh;
         flex-direction: column;
-        /* background-color: aqua; */
     }
     .box-tag{
-        width: 70vw;
-        height: 35vh;
+        width: 375px;
+        height: 275px;
     }
     .text-css{
-        font-size: 3vw; 
+        font-size: 0.8rem;  
      }
      .service-box-header{
-         font-size: 4vw;
+        font-size: 1rem;
      }
+     .service-header-hr{
+        width:12%;
+      }
 }
  @media screen and (min-width: 600px) {
     .box-tag{
-        width: 40vw;
-        height: 35vh;
+        width: 270px;
+        height: 270px;
     }
     .text-css{
-        font-size: 1.7vw; 
+        font-size: 0.7rem;  
      }
      .service-box-header{
-         font-size: 3vw;
+        font-size: 1.3rem;
      }
 }
 @media only screen and (min-width: 768px) {
     .box-tag{
-        width: 35vw;
-        height: 35vh;
+        width: 300px;
+        height: 300px;
     }
     .text-css{
-        font-size: 1.5vw; 
+        font-size: 0.8rem;
      }
      .service-box-header{
-         font-size: 2vw;
+        font-size: 1.4rem; 
      }
 }
 @media screen and (min-width: 900px) {
     .box-tag{
-        width: 30vw;
-        height: 37vh;
+        width: 375px;
+        height: 375px;
     }
     .text-css{
-        font-size: 1.5vw; 
+        font-size: 1rem; 
      }
      .service-box-header{
-         font-size: 2vw;
+        font-size: 1.7rem;
      }
 }
 @media screen and (min-width: 1200px) {
     .box-tag{
-        width: 25vw;
-        height: 42vh;
+        width: 400px;
+        height: 380px;
     }
     .text-css{
-        font-size: 1.2vw; 
+        font-size: 1rem; 
      }
      .service-box-header{
-         font-size: 1.7vw;
+         font-size: 1.7rem;
      }
 } 

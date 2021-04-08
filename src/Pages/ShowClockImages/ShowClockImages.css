@@ -1,7 +1,5 @@
 .show-clock-body{
-    /* height: 100vh; */
-    /* background-color: aqua;  */
-    /* background-color: ; */
+    width: 100vw;
     padding: 2% 5% 2% 5%;
     background-color: white;
 }
@@ -9,9 +7,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 1%;
-    /* background-color: red; */
+    margin: 4% 0%;
 }
 .Show-Clock-header-text{
     font-size: calc(20px + 2vmin);
@@ -22,8 +19,6 @@
 }
 /* Grid Outter Tag */
 .clock-img-grid{
-    
-    /* background-color: red; */
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -46,26 +41,19 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* border: 2px solid black; */
     border-radius: 10px;
     background-color: black;
-    /* background-color: #404040; */
-    /* background-color: white; */
     transition: .5s ease-in-out;
 }
 .img-wrap img:hover{
     background-color: #0099ff;
 }
 .btn-tag{
-    /* background-color: black; */
     margin-top: 2%;
     display: flex;
     justify-content: center;
 }
-/* .btn-tag Button {
-    width: 15%;
-} */
-/* img css */
+
 :root {
   --primary: #FFCE00;
   --secondary: #FE4880;
@@ -158,12 +146,6 @@ body {
   min-width: 40%;
   max-width: 40%;
   position: absolute;
-  /* background-color: red; */
-  /* top: 5; */
-  /* left: 2%; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
   border-radius: 10px;
   transition: .5s ease-in-out;
 }
@@ -215,11 +197,10 @@ body {
   font-size: 18px;
   line-height: 1.4;
 }
-
-
-
-
-
+.showClock-header-hr{
+  margin-left:1%;
+  width:6%;
+}
 
 
 @media screen and (min-width: 600px) {
@@ -256,13 +237,17 @@ body {
 
 @media screen and (max-width: 600px) {
   .clock-img-grid{
-    grid-template-columns: 1fr ;
-}
-.card_layout {
-  width: 80vw;
-  height: 50vh;
-  perspective: 1000px;
-}
+      grid-template-columns: 1fr ;
+  }
+  .card_layout {
+    width: 80vw;
+    height: 50vh;
+    perspective: 1000px;
+  }
+  .showClock-header-hr{
+    margin-left:1%;
+    width:12%;
+  }
 }
 
 

@@ -6,15 +6,13 @@
     flex-direction: column;
     padding: 2% 5% 2% 5%;
     height: 100vh;
+    width: 100vw;
     font-family: 'Montserrat', sans-serif;
-    /* background-color: red; */
 }
 .About-header{
-    /* background-color: red; */
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 1%;
 }
 .About-header-text{
@@ -22,7 +20,6 @@
 }
 .About-tag{
     display: flex;
-    /* background-color:aqua; */
     height: 70vh;
     width: 100%;
     align-items: center;
@@ -30,16 +27,15 @@
 }
 .content-tag{
     width: 50%;
-    height: 60vh;
-    /* background-color: blue; */
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5%;
     font-size: 4vw;
+    text-align: justify;
 }
 .Owner-img-tag{
-    /* background-color: yellow; */
     width: 50%;
     height: 60vh;
     display: flex;
@@ -52,7 +48,10 @@
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+}
+.aboutOwner-header-hr{
+    margin-left:1%;
+    width:6%;
 }
 
 @media screen and (max-width: 600px) {
@@ -61,35 +60,45 @@
     }
     .content-tag{
         width: 100%;
-        height: 38vh;
-        /* background-color: aqua; */
+        height: 275px;
+        font-size: 0.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
     }
     .Owner-img-tag{
         width: 100%;
         height: 42vh;
-        /* background-color: blue; */
     }
     .About-tag{
         height: 84vh;
-        /* background-color: blueviolet; */
+    }
+    .aboutOwner-header-hr{
+        margin-left:1%;
+        width:12%;
     }
 }
 @media screen and (min-width: 600px) {
     .content-tag{
-        font-size: 2.5vw;
+        font-size: 0.8rem;
+        height: 275px;
+        overflow: hidden;
     }
 
 }
 @media screen and (min-width: 750px) {
     .content-tag{
-        font-size: 2vw;
+        font-size: 0.9rem;
+        height: 300px;
+        
     }
 }
 @media screen and (min-width: 1024px) {
     .content-tag{
-        font-size: 1.5vw;
+        font-size: 1.2rem;
+        height: 400px;
+        overflow: hidden;
+        
     }
 }

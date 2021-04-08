@@ -92,6 +92,9 @@ input[type='file'] {
     .btn-text-css{
         font-size: 5vw;
     }
+    .addPhotoTableBody{
+        width: 100%;
+    }
 }
  @media screen and (min-width: 600px) {
     .upload-img-tag{
@@ -100,6 +103,9 @@ input[type='file'] {
     }
     .btn-text-css{
         font-size: 3.5vw;
+    }
+    .addPhotoTableBody{
+        width: 90%;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -127,5 +133,8 @@ input[type='file'] {
     }
     .btn-text-css{
         font-size: 2vw;
+    }
+    .addPhotoTableBody{
+        width: 70%;
     }
 } 

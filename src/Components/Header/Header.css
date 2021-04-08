@@ -3,10 +3,12 @@
 }
 .navbar{
   background-color: transparent;
+  /* background-color: #5c5c5c; */
 }
 .navbar.active{
   background-color: #5c5c5c;
 }
+
 
 /* .bg-dark{
   background-color: red;
@@ -27,4 +29,19 @@
   color: rgb(255, 255, 255) !important;
 }
   
+@media screen and (max-width: 770px) {
+  .navbar-light .navbar-brand{
+    color: black;
+  }
+  .navbar-light .navbar-brand:hover{
+    color: black;
+    
+  }
+}
+@media screen and (min-width: 770px) {
+  .collapse{
+    display: flex;
+    justify-content: space-between;
+  }
+}
 

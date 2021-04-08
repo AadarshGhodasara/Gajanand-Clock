@@ -94,3 +94,27 @@
     top: 0;
     opacity: 1;
 }
+
+@media screen and (max-width: 650px) {
+    .card{
+
+        width: 250px;
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .card{
+
+        width: 275px;
+        height: 375px;
+    }
+}
+
+@media screen and (min-width: 810px) {
+    .card{
+
+        width: 350px;
+        height: 450px;
+    }
+}

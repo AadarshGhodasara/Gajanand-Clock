@@ -2,13 +2,13 @@ import React from 'react';
 import './AddClockPhoto.css';
 import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/AddAPhoto';
-import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
+// import Button from '@material-ui/core/Button';
+// import AddIcon from '@material-ui/icons/AddAPhoto';
+// import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 import history from '../../Components/History';
 import AddPhotoHeader from './AddPhotoHeader';
 import Swal from 'sweetalert2';
-import { FormControl , FormLabel } from 'react-bootstrap';
+// import { FormControl , FormLabel } from 'react-bootstrap';
 const types = ['image/png' , 'image/jpeg'];
 
 
@@ -32,14 +32,12 @@ class AddPhoto extends React.Component {
     }
 
 
-      uploadImg = () => {
-        console.log('NAme=>',this.state.productName,'Price=>',this.state.productPrice,'Type=>',this.state.productType,'Details=>',this.state.productDetail,'SelectFile==>',this.state.selectFile);
+      uploadImage = () => {
         const {selectFile} = this.state;
         if(selectFile && types.includes(selectFile.type)){
             this.setState({url:'',isUpload:1});
             let url='';
             const image = selectFile;
-            console.log('IMAGE====>',image.name);
             const uploadTask = storage.ref(`${this.state.productType}/${image.name}`).put(image);
             const collectionRef = store.collection(`${this.state.productType}`);
             uploadTask.on('state_changed',
@@ -54,7 +52,6 @@ class AddPhoto extends React.Component {
                 // complete function
                 await storage.ref(`${this.state.productType}`).child(image.name).getDownloadURL()
                 .then((imgUrl) => {
-                    console.log(imgUrl);
                     url = imgUrl;
                     this.setState({url : imgUrl});
                     // alert('Image successfully upload...')
@@ -64,7 +61,6 @@ class AddPhoto extends React.Component {
                 collectionRef.add({ url , createAt, productName, productDetail, productPrice, productType }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
-                        console.log('IDDD =>',this.state.imageId);
                     }
                 );  
                 Swal.fire(
@@ -85,17 +81,14 @@ class AddPhoto extends React.Component {
               })
             this.setState({url:'',isUpload:null});
         }
-        console.log('===> ',this.state.url);
 
     }
 
     deleteImg = () => {
-        console.log('del');
         if( this.state.url){
             this.setState({isDelete:1});
             // storage.refFromURL
             store.collection('images').doc(this.state.imageId).delete().then(()=>{
-                console.log('delete');
             }).catch((err)=>{
                 console.log(err);
             })
@@ -119,7 +112,7 @@ class AddPhoto extends React.Component {
     }
 
     render(){
-        const {isUpload, selectFile, isDelete, url,productName,productDetail,productPrice,productType} = this.state;
+        const {isUpload, isDelete,productName,productDetail,productPrice,productType} = this.state;
         return(
             <>
                 <AddPhotoHeader text='Add Product' clock={true} />  
@@ -191,7 +184,7 @@ class AddPhoto extends React.Component {
                     </div> */} 
                     
                     <div className="container mt-5">
-                    <div className="w-75 mx-auto shadow p-5 bg-white">
+                    <div className="mx-auto shadow p-5 bg-red addPhotoTableBody">
                         <h2 className="text-center mb-4">Add Product</h2>
                         <div className="form-group">
                             <input
@@ -242,10 +235,13 @@ class AddPhoto extends React.Component {
                                 id='uploadFile'
                                 style={{color:'black'}} 
                                 className="form-control-file" 
-                                onChange={(e)=>this.setState({selectFile:e.target.files?.[0]})} 
+                                onChange={(e)=>{
+                                    console.log('____======>',e.target.files)
+                                    this.setState({selectFile:e.target.files?.[0]})
+                                }} 
                             />
                         </div>
-                        <button className="btn btn-primary btn-block" onClick={this.uploadImg}>Add Product</button>
+                        <button className="btn btn-primary btn-block" onClick={this.uploadImage}>Add Product</button>
                     </div>
                     </div>
                     

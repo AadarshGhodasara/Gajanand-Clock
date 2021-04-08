@@ -1,0 +1,120 @@
+.footer-body{
+    width: 100%;
+    background-color: #0f1521;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.footer-header{
+    width: 80%;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-bottom: 1px solid #fff;
+}
+.footer-content-tag{
+    margin-top: 2%;
+    width: 80%;
+    /* background-color: aqua; */
+    display: flex;
+    margin-bottom: 2.5%;
+    /* align-items: center; */
+    justify-content: space-between;
+    
+}
+.first-content-tag{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+.first-content-tag label{
+    font-size: 1.5rem;
+    color: #fff;
+}
+.footer-address-tag{
+    margin-top: 5px;
+    display: flex;
+}
+.footer-address-tag p{
+    color: white;
+}
+.footer-address-tag-icon{
+    width: 10%;
+}
+
+.second-tag{
+    /* background-color: blue; */
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.second-tag label{
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+.second-tag p {
+    font-size: 1rem;
+    color: #fff;
+    padding: 5%;
+    text-align: justify;
+    /* background-color: red; */
+}
+.thrid-content-tag{
+     /* background-color: blue; */
+     width: 30%;
+     display: flex;
+     align-items: center;
+     flex-direction: column;   
+}
+.thrid-content-tag label{
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+.social-media-icon-tag{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    /* background-color: red; */
+}
+
+@media screen and (max-width: 750px) {
+    .footer-body{
+        margin-top: 5%;
+    }
+    .footer-content-tag{
+        flex-direction: column;
+    }
+    .first-content-tag{
+        /* background-color: red; */
+        text-align: center;
+        width: 100%;
+        align-items: center;
+    }
+    .footer-address-tag{
+        /* background-color: blue; */
+        width: 90%;
+    }
+    .footer-address-tag-icon{
+        width: 20%;
+    }
+    .second-tag{
+        width: 100%;
+        margin-top: 4%;
+    }
+    .thrid-content-tag{
+        width: 100%;
+        margin-top: 2%;
+        margin-bottom: 10%;
+    }
+    .social-media-icon-tag{
+        flex-direction: row;
+    }
+}

@@ -12,13 +12,15 @@ import LoaderModal from '../../Components/Loader/LoaderModal';
 const  SignUp = () => {
 
         const [ Email , setEmail ] = useState('');
+        // const [ phoneNumber , setPhoneNumber ] = useState('');
         const [ Pass , setPass ] = useState('');
+        const [userName,setUserName] = useState('');
         const [ Confirm_Pass , setRePass ] = useState('');
         const [ Name , setName ] = useState('');
         const [ isSignUp , setIsSignUp ] = useState(null);
 
     
-    function  submitSignUp(){
+    function  handleSignUpEvent(){
         if( !(Pass === Confirm_Pass) ){
             Swal.fire({
                 icon: 'error',
@@ -37,7 +39,9 @@ const  SignUp = () => {
             CurrentUser.sendEmailVerification().then(function() {
             fire.database().ref('Users/'+CurrentUser.uid).set({
                     Full_Name : Name,
-                    Email : Email 
+                    user_name: userName,
+                    Email : Email, 
+                    Address:'none',
             }).then((data)=>{
                      //success callback
                      Swal.fire(
@@ -102,6 +106,10 @@ const  SignUp = () => {
                         </div>
                         <label className='SignUp-header'>Sign Up</label>
                         <div className='inputTag'>
+                            <FormLabel className='label-css'>Username</FormLabel>
+                            <FormControl value={userName} onChange={(e)=> setUserName(e.target.value)} type="name" size='lg' placeholder="Full Name" />
+                        </div>
+                        <div className='inputTag'>
                             <FormLabel className='label-css'>Full Name</FormLabel>
                             <FormControl value={Name} onChange={(e)=> setName(e.target.value)} type="name" size='lg' placeholder="Full Name" />
                         </div>
@@ -109,16 +117,20 @@ const  SignUp = () => {
                             <FormLabel className='label-css'>Email</FormLabel>
                             <FormControl value={Email} onChange={(e)=> setEmail(e.target.value)} type="email" size='lg' placeholder="Email" />
                         </div>
+                        {/* <div className='inputTag'>
+                            <FormLabel className='label-css'>Phone No.</FormLabel>
+                            <FormControl value={phoneNumber} onChange={(e)=> setPhoneNumber(e.target.value)} type="tel" size='lg' placeholder="Phone Number" />
+                        </div> */}
                         <div className='inputTag'>
                             <FormLabel className='label-css'>Password</FormLabel>
                             <FormControl value={Pass} onChange={(e)=> setPass(e.target.value)} type="password" size='lg' placeholder="Password" />
                         </div>
                         <div className='inputTag'>
                             <FormLabel className='label-css'>Confirm Password</FormLabel>
-                            <FormControl value={Confirm_Pass} onChange={(e)=> setRePass(e.target.value)} type="password" size='lg' placeholder="Password" />
+                            <FormControl value={Confirm_Pass} onChange={(e)=> setRePass(e.target.value)} type="password" size='lg' placeholder="ConfirmPassword" />
                         </div>
                         <div className='inputTag' style={{marginTop:'5%'}}>
-                            <button class="btn btn-primary" style={{width:'100%'}} type="button" onClick={submitSignUp}>SIGN UP</button>
+                            <button class="btn btn-primary" style={{width:'100%'}} type="button" onClick={handleSignUpEvent}>SIGN UP</button>
                         </div>
                         <div className='LoginLabelTag'>
                             <Link href="/login" variant="body2">

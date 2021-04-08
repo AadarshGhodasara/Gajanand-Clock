@@ -3,13 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 110vh;
     background-color: black;
 }
 
 .SignUpTag{
     border-radius: 10px;
-    height: 75vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -58,25 +58,26 @@ input[type=Submit]{
 @media screen and (min-width: 600px) {
     .SignUpTag{
         width: 70%;
-        height: 80vh;
+        height: 100vh;
         
     }
     .SignUpOutterTag{
-        height: 100vh;
+        height: 115vh;
+        
     }
 
 }
 @media screen and (min-width: 900px) {
     .SignUpTag{
         width: 50%;
-        height: 85vh;
+        height: 95vh;
     }
 }
 @media screen and (min-width: 1200px) {
     .SignUpTag{
         /* background-color: red; */
         width: 43%;
-        height: 90vh;
+        height: 100vh;
     }
 }
 
@@ -87,7 +88,7 @@ input[type=Submit]{
         
     }
     .SignUpOutterTag{
-        height: 100vh;
+        height: 110vh;
     }
 
  

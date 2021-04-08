@@ -8,26 +8,28 @@ import {
 } from "react-router-dom";
 import history from './Components/History';
 import Loader from './Components/Loader/LoaderModal';
-import Header from './Components/Header/Header'
+import AddClockPhoto from './Pages/AddPhoto/AddClockPhoto';
+import AddFramePhoto from './Pages/AddPhoto/AddFramePhoto'
+// import Header from './Components/Header/Header'
 // const Header = React.lazy(() => import('./Components/Header/Header'));
 const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/UserStatus'));
 const Contact = React.lazy(() => import('./Pages/content/content'));
 const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
 const ProductHistory = React.lazy(() => import('./Pages/UserProductHistory/ProductHistory'));
 const AdminOrder = React.lazy(() => import('./Pages/AdminGetOrder/AdminOrder'));
-const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
-const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
+// const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
+// const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
+const ShowUserDetails = React.lazy(() => import('./Pages/ShowUserDetails/ShowUserDetails'));
 const EditProductDetails = React.lazy(() => import('./Pages/EditProductDetails/EditProductDetails'));
 const ShowProductDetails = React.lazy(() => import('./Pages/ShowProductDetails/ShowProductDetails'));
+
 
 class App extends React.Component{
   render(){
     return(
       <Fragment> 
         <Suspense fallback={<Loader text='Loading' />}>
-        
-        <Router history={history}>
-         {/* <Header /> */}
+        <Router history={history}> 
           <Switch>
           <Route exact path="/">
               <CheckUserStatus />
@@ -41,13 +43,13 @@ class App extends React.Component{
             <Route  path="/signUp">
                 <SignUp  />
             </Route>
-            <Route  path="/Cart">
+            <Route  path="/User/Cart/:id">
                 <Cart  />
             </Route>
-            <Route  path="/AdminOrder">
+            <Route  path="/Admin/Order/:id">
                 <AdminOrder  />
             </Route>
-            <Route  path="/ProductHistory">
+            <Route  path="/User/Order/History/:id">
                 <ProductHistory  />
             </Route>
             <Route  path="/AddClockImages">
@@ -59,9 +61,11 @@ class App extends React.Component{
             <Route  path="/EditProductDetails">
                 <EditProductDetails  />
             </Route>
+            <Route  path="/ShowUserDetails/:id">
+                <ShowUserDetails  />
+            </Route>
             <Route  path="/ShowProductDetails">
                 <ShowProductDetails />
-                {/* state={history.location.state}  */}
             </Route>
           </Switch>
         </Router>

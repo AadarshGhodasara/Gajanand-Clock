@@ -7,10 +7,15 @@ function AboutOwner() {
         <div className='Body'>
             <div className='About-header'>
             <label className='About-header-text'><strong>About Owner</strong></label>
+            <div className='aboutOwner-header-hr'>
+                    <hr style={{borderTop:'5px solid #00c6a7'}}></hr>
+            </div>
             </div>
             <div className='About-tag'> 
                 <div className='content-tag'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>
+                    Nilesh Patel is owner of the company, who also owns 2 different companies having name of "Gajanand" to represent his business. He is masterclass in this business for a very long time period of more than 18 years in "Morbi", which is famous as "ceramic city". He leads his company to many known people of Gujarat to raise his business to another level.
+                    </p>
                 </div>
                 <div className='Owner-img-tag'>
                     <Image src="user.png" thumbnail className='Owner-img' width='350' height='350' />
