@@ -5,6 +5,8 @@ import './Card.css'
 import history from './History'
 export default function Card({state}) {
     const isLogin = useSelector(state => state);
+    const [id,setId] = useState(state.id)
+    const type = state.productType
     const [isAdmin,setIsAdmin] = useState(false)
     useEffect(()=>{
         const CurrentUser = fire.auth().currentUser;
@@ -13,10 +15,9 @@ export default function Card({state}) {
         }
     },[isLogin])
     const handleBuyNowEvent = ( ) => {
-        history.push({
-                        pathname:'/ShowProductDetails',
-                        state:{state}
-                    })
+        console.log('----->',state)
+        console.log('33----->',state.productType)
+        history.push({pathname:`/${type}/Details/${id}`})
     }
     const handleEditProductEvent = ( ) => {
         history.push({

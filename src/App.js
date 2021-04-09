@@ -14,6 +14,7 @@ import AddFramePhoto from './Pages/AddPhoto/AddFramePhoto'
 // const Header = React.lazy(() => import('./Components/Header/Header'));
 const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/UserStatus'));
 const Contact = React.lazy(() => import('./Pages/content/content'));
+const UserAndAdminProfile = React.lazy(() => import('./Pages/UserAndAdminProfile/UserAndAdminProfile'));
 const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
 const ProductHistory = React.lazy(() => import('./Pages/UserProductHistory/ProductHistory'));
 const AdminOrder = React.lazy(() => import('./Pages/AdminGetOrder/AdminOrder'));
@@ -36,6 +37,9 @@ class App extends React.Component{
             </Route>
             <Route  path="/home">
               <Contact />
+            </Route>
+            <Route  path="/profile/:id">
+              <UserAndAdminProfile />
             </Route>
             <Route  path="/login">
                 <Login  />
@@ -64,7 +68,7 @@ class App extends React.Component{
             <Route  path="/ShowUserDetails/:id">
                 <ShowUserDetails  />
             </Route>
-            <Route  path="/ShowProductDetails">
+            <Route  path="/:type/Details/:id">
                 <ShowProductDetails />
             </Route>
           </Switch>

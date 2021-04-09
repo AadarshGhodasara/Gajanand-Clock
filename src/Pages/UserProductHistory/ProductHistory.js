@@ -52,7 +52,11 @@ const [totalPrice,setTotalPrice] = useState(0)
             }
           })
         }else{
-          console.log('NO CANCLE')
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You Cannot Cencle Order because order in transition.',
+          })
         }
 
       }else{

@@ -31,61 +31,70 @@ const  SignUp = () => {
                 setRePass('')
               })
         }else{
-            setIsSignUp(1); 
-            fire.auth().createUserWithEmailAndPassword(Email,Pass)
-            .then(
-            async function () {
-              const  CurrentUser = fire.auth().currentUser;
-            CurrentUser.sendEmailVerification().then(function() {
-            fire.database().ref('Users/'+CurrentUser.uid).set({
-                    Full_Name : Name,
-                    user_name: userName,
-                    Email : Email, 
-                    Address:'none',
-            }).then((data)=>{
-                     //success callback
-                     Swal.fire(
-                        'Sign Up',
-                        'Sign Up Successful And Verification Link Sent In Your Email...',
-                        'success'
-                      ).then(()=>{
-                          setEmail('');setName('');
-                          setPass('');setRePass('');
-                      })
-                    setIsSignUp(null);
-                    history.push({ 
-                            pathname: '/login',
-                            });
-                    }).catch((error)=>{
-                            console.log('error ' , error)
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: `${error}`,
-                              })
-                              setIsSignUp(null);
-                        })
-            }).catch(function(error) {
+            if(userName && Name && Email && Pass && Confirm_Pass){
+                setIsSignUp(1); 
+                fire.auth().createUserWithEmailAndPassword(Email,Pass)
+                .then(
+                async function () {
+                  const  CurrentUser = fire.auth().currentUser;
+                CurrentUser.sendEmailVerification().then(function() {
+                fire.database().ref('Users/'+CurrentUser.uid).set({
+                        Full_Name : Name,
+                        user_name: userName,
+                        Email : Email, 
+                        Address:'none',
+                        user_image_url:'none'
+                }).then((data)=>{
+                         //success callback
+                         Swal.fire(
+                            'Sign Up',
+                            'Sign Up Successful And Verification Link Sent In Your Email...',
+                            'success'
+                          ).then(()=>{
+                              setEmail('');setName('');
+                              setPass('');setRePass('');
+                          })
+                        setIsSignUp(null);
+                        history.push({ 
+                                pathname: '/login',
+                                });
+                        }).catch((error)=>{
+                                console.log('error ' , error)
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
                                     text: `${error}`,
-                                })
-                                console.log(error);
-                                setIsSignUp(null);
-                        });
-            })
-            .catch((error) => {
-                
+                                  })
+                                  setIsSignUp(null);
+                            })
+                }).catch(function(error) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: `${error}`,
+                                    })
+                                    console.log(error);
+                                    setIsSignUp(null);
+                            });
+                })
+                .catch((error) => {
+                    
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `${error}`,
+                      })
+                      setIsSignUp(null);
+                    // console.log('->',error);
+                });
+                    // setIsSignUp(null);
+            }else{
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `${error}`,
+                    text: 'enter all details',
                   })
-                  setIsSignUp(null);
-                // console.log('->',error);
-            });
-                // setIsSignUp(null);
+            }
         }
     
 }

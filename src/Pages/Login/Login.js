@@ -18,40 +18,48 @@ const Login = () => {
     
     function  handleLoginEvent(){
         // console.log(pass,'==',email)
-        fire.auth().signInWithEmailAndPassword(email,pass)
-        .then(
-            async function(){
-                const CurrentUser = fire.auth().currentUser;
-                if(CurrentUser.emailVerified === false){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Email Not Verified...',
-                      })
-                    
-                }else{
-                    Swal.fire(
-                        'Login',
-                        'Successful Login...',
-                        'success'
-                      ).then(()=>{
-                        //   console.log('USER===>',CurrentUser.uid)
-                          window.localStorage.setItem('userId',CurrentUser.uid);
-                        // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
-                            dispatch(setLogin());    
-                        // }  
-                        history.push({pathname:'/home'});
-                      })
+        if(email && pass){
+            fire.auth().signInWithEmailAndPassword(email,pass)
+            .then(
+                async function(){
+                    const CurrentUser = fire.auth().currentUser;
+                    if(CurrentUser.emailVerified === false){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Email Not Verified...',
+                          })
+                        
+                    }else{
+                        Swal.fire(
+                            'Login',
+                            'Successful Login...',
+                            'success'
+                          ).then(()=>{
+                            //   console.log('USER===>',CurrentUser.uid)
+                              window.localStorage.setItem('userId',CurrentUser.uid);
+                            // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
+                                dispatch(setLogin());    
+                            // }  
+                            history.push({pathname:'/home'});
+                          })
+                    }
                 }
-            }
-        )
-        .catch((error) => {
+            )
+            .catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                  })
+            })   
+        }else{
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.message,
+                text: 'enter all details',
               })
-        })
+        }
     }
         
         return(

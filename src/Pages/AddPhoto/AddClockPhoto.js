@@ -34,52 +34,62 @@ class AddPhoto extends React.Component {
 
       uploadImage = () => {
         const {selectFile} = this.state;
-        if(selectFile && types.includes(selectFile.type)){
-            this.setState({url:'',isUpload:1});
-            let url='';
-            const image = selectFile;
-            const uploadTask = storage.ref(`${this.state.productType}/${image.name}`).put(image);
-            const collectionRef = store.collection(`${this.state.productType}`);
-            uploadTask.on('state_changed',
-            (snapshot) => {
-                // progress function
-            },
-            (error) => {
-                // error function
-                console.log(error);
-            },
-            async () => {
-                // complete function
-                await storage.ref(`${this.state.productType}`).child(image.name).getDownloadURL()
-                .then((imgUrl) => {
-                    url = imgUrl;
-                    this.setState({url : imgUrl});
-                    // alert('Image successfully upload...')
-                })
-                const createAt = timestamp();
-                const {productName, productDetail, productPrice, productType} = this.state
-                collectionRef.add({ url , createAt, productName, productDetail, productPrice, productType }).then(
-                    (docRef) => {
-                        this.setState({imageId : docRef.id});
-                    }
-                );  
-                Swal.fire(
-                    'Clock Image upload',
-                    'Your Clock Image successfully upload...',
-                    'success'
-                  ).then(()=>{
-                    this.setState({isUpload:null,productName:'',productDetail:'',
-                    productType:'',productPrice:''});
-                    document.getElementById("uploadFile").value = "";
-                  });
-            });
+        if( this.state.productName && this.state.productType && this.state.productDetail && this.state.productPrice && this.state.selectFile ){
+            if(selectFile && types.includes(selectFile.type)){
+                this.setState({url:'',isUpload:1});
+                let url='';
+                const image = selectFile;
+                const uploadTask = storage.ref(`${this.state.productType}/${image.name}`).put(image);
+                const collectionRef = store.collection(`${this.state.productType}`);
+                uploadTask.on('state_changed',
+                (snapshot) => {
+                    // progress function
+                },
+                (error) => {
+                    // error function
+                    console.log(error);
+                },
+                async () => {
+                    // complete function
+                    await storage.ref(`${this.state.productType}`).child(image.name).getDownloadURL()
+                    .then((imgUrl) => {
+                        url = imgUrl;
+                        this.setState({url : imgUrl});
+                        // alert('Image successfully upload...')
+                    })
+                    const createAt = timestamp();
+                    const productEnable = 1 
+                    const {productName, productDetail, productPrice, productType} = this.state
+                    collectionRef.add({ url , createAt, productName, productDetail, productPrice, productType, productEnable }).then(
+                        (docRef) => {
+                            this.setState({imageId : docRef.id});
+                        }
+                    );  
+                    Swal.fire(
+                        'Clock Image upload',
+                        'Your Clock Image successfully upload...',
+                        'success'
+                      ).then(()=>{
+                        this.setState({isUpload:null,productName:'',productDetail:'',
+                        productType:'',productPrice:''});
+                        document.getElementById("uploadFile").value = "";
+                      });
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Not Supported format...',
+                  })
+                this.setState({url:'',isUpload:null});
+            }
+    
         }else{
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Not Supported format...',
+                text: 'enter all details',
               })
-            this.setState({url:'',isUpload:null});
         }
 
     }

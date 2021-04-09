@@ -30,8 +30,6 @@ const [landmarkOptions,setLandmarkOptions] = useState([])
 // const [changeNoOfQuantity,setChangeNoOfQuantity] = useState(0)
 const [totalPrice,setTotalPrice] = useState(0)
     useEffect(() => {
-        // const  CurrentUser = firebase.auth().currentUser;
-        // console.log('INNNNNNNN=>',CurrentUser)
         let total = 0
         // if(CurrentUser){
             var starCountRef = firebase.database().ref(`Users/${id}/Cart`);
@@ -64,7 +62,7 @@ const [totalPrice,setTotalPrice] = useState(0)
 
     useEffect(()=>{
       let temp = []
-      if(arrayOfPostOffice.length){
+      if(arrayOfPostOffice.length && arrayOfPostOffice[0].State === 'Gujarat'){
         setCity(arrayOfPostOffice[0].Block)
         arrayOfPostOffice.map(val=>{
           if(val.BranchType === 'Sub Post Office'){
@@ -106,8 +104,6 @@ const [totalPrice,setTotalPrice] = useState(0)
         const date = new Date()
         Object.assign(product,{status:'Order Pending'})
         Object.assign(product,{product_access_name: product.product_name+` ${date.toUTCString()}`})
-        // console.log('Product DETAILS ===>',CurrentUser.uid)
-        // console.log('CurrentUser=>',CurrentUser)
           // if(CurrentUser){
           firebase.database().ref(`Users/${id}/History/${product.product_name +` ${date.toUTCString()}`}`).update({
               product_name:product.product_name,
@@ -175,7 +171,6 @@ const [totalPrice,setTotalPrice] = useState(0)
       if(landmark === '-' || landmark===''){
         setLandmark('') 
       }
-      // console.log('+++++===>',addressLine1,'==>',addressLine2,'==>',zipCode,'==>',phoneNumber,'==>',landmark,'==>',phoneNumber,'=>',city)
       if( 
           addressLine1 && addressLine1!=='-' 
           && addressLine2 && addressLine2!=='-' 
@@ -226,7 +221,6 @@ const [totalPrice,setTotalPrice] = useState(0)
 
     return (
         <>
-        {console.log('***********************************')}
         <Header text={'Cart'} clock={true} />
         <div className="pb-5" style={{fontFamily:'Montserrat,sans-serif'}}>
         <div className="container-fluid">
@@ -353,10 +347,8 @@ const [totalPrice,setTotalPrice] = useState(0)
                         <input type="text" value={zipCode!=='-'?zipCode:''} className="form-control" id="zip" 
                         onChange={(e)=>{
                           setZipCode(e.target.value)
-                          axios(`https://api.postalpincode.in/pincode/${e.target.value}`).then((result)=>{
-                            console.log('===???===>',result.data,'------------>',result.data[0].Status)  
+                          axios(`https://api.postalpincode.in/pincode/${e.target.value}`).then((result)=>{  
                             if(result.data[0].Status === "Success"){
-                              console.log('===???===>',result.data[0].PostOffice)
                               setArrayOfPostOffice(result.data[0].PostOffice)
                             }
                           })
@@ -369,7 +361,6 @@ const [totalPrice,setTotalPrice] = useState(0)
                         <label for="zip">Landmark</label>
                         <select className="custom-select d-block w-100"  defaultValue={landmark!=='-'?landmark:''} onChange={(e)=>setLandmark(e.target.value)} id="country" required="">
                             <option value="">Choose...</option>
-                            {console.log('LOL------++++>',landmarkOptions.length)}
                             {landmarkOptions.length ? 
                               landmarkOptions.map((val)=>(
                                 <option value={`${val}`} key={val}>{val}</option>

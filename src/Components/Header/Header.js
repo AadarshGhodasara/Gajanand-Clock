@@ -133,6 +133,9 @@ function Header() {
     const handleSignUpEvent = () => {
         history.push({pathname:'/signUp'});
     }
+    const handleProfileEvent = () => {
+        history.push({pathname:`/profile/${currentUserId}`});
+    }
     
     // const AddFrame = () => {
     //     history.push({pathname:'/AddFrameImages'});
@@ -147,19 +150,17 @@ function Header() {
                         {/* <Link onSelect={checkExapnd} style={{color:'white'}}  href="#Home">Home</Link> */}
                         <Link onSelect={checkExapnd}  href="#About">About</Link>
                         <Link onSelect={checkExapnd} href="#Service"  >Service</Link>
+                        <Link onSelect={checkExapnd}  href="#ShowClockImages">Clock</Link>
+                        <Link onSelect={checkExapnd}  href='#ShowFrameImages'>Frame</Link>
                         { (isAdmin===true || webStorageAdmin===true) 
                         ?
                         <Nav>
                         <Link onSelect={checkExapnd} onClick={handleAddProductEvent} href="/AddClockImages">Add Product</Link>
                         <Link onSelect={checkExapnd} onClick={handleOrderedEvent} href='#'>Orders</Link>
                         </Nav>
-                        :
-                        <>
-                        <Link onSelect={checkExapnd}  href="#ShowClockImages">Clock</Link>
-                        <Link onSelect={checkExapnd}  href='#ShowFrameImages'>Frame</Link>
-                        {/* //  null */}
-                        </>
-                        }
+                        : null}
+
+
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
                         {isLogin && (isAdmin!==true && webStorageAdmin!==true) ?
@@ -171,7 +172,7 @@ function Header() {
                 </Nav>
                 <Nav>
                         {isLogin && windowInnerWidth>769 ? 
-                        <Link onSelect={checkExapnd}>Hello, {userName}</Link>
+                        <Link onSelect={checkExapnd} onClick={handleProfileEvent}>Hello, {userName}</Link>
                         : null
                         }
                         {isLogin && (isAdmin!==true && webStorageAdmin!==true) ?

@@ -17,6 +17,7 @@ export default function EditProductDetails(props) {
     const [productImgUrl,setProductImgUrl] = useState('')
     const [productFileName,setProductFileName] = useState('')
     const [productFile,setProductFile] = useState()
+    const [productEnable,setProductEnable] = useState()
     const [isUpdate,setIsUpdate] = useState(true)
     useEffect(()=>{
         console.log('PROPS ==>',location.state.state)
@@ -27,6 +28,7 @@ export default function EditProductDetails(props) {
             setProductPrice(location.state.state.productPrice)
             setProductType(location.state.state.productType)
             setProductImgUrl(location.state.state.url)
+            setProductEnable(location.state.state.productEnable)
             let image = storage.refFromURL(location.state.state.url);
             setProductFileName(image.name)
             console.log('IMAGES =>',image)
@@ -84,6 +86,22 @@ export default function EditProductDetails(props) {
       let image = storage.refFromURL(tempUrl);
       setProductFileName(image.name)
       setIsProductImageChange(false)
+    }
+
+    const enableOrDisableProduct = (val) => {
+      setIsUpdate(false)
+      store.collection(`${productType}`).doc(`${productId}`).update({
+        productEnable:val
+      }).then(()=>{
+        setProductEnable(val)
+        Swal.fire(
+          'Update Product Details',
+          `Successfully ${val? 'enable' : 'disable'} product in store...`,
+          'success'
+        ).then(()=>{
+          setIsUpdate(true)
+        });
+      })
     }
 
     const deleteProduct = () => {
@@ -188,7 +206,11 @@ export default function EditProductDetails(props) {
                   />
           </div>
           <button className="btn btn-warning btn-block" onClick={updateProductDetails}>Update Product Details</button>
-          <button className="btn btn-danger btn-block" onClick={deleteProduct}>Delete Product</button>
+          {productEnable ? 
+          <button className="btn btn-danger btn-block" onClick={()=>enableOrDisableProduct(0)}>Disable Product In Store</button>
+          :
+          <button className="btn btn-primary btn-block" onClick={()=>enableOrDisableProduct(1)}>Enable Product In Store</button>
+          }
       </div>
       { !isUpdate && <LoaderModal text='Product Details Updating...'  /> }
     </div>
