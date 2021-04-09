@@ -3,6 +3,7 @@ import Loader from '../../Components/Loader/LoaderModal';
 import ShowClockImages from '../ShowClockImages/ShowClockImages';
 import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
 const Header = React.lazy(() => import('../../Components/Header/Header.js'));
+const Footer = React.lazy(() => import('../../Components/Footer/Footer'));
 const Home = React.lazy(() => import('../Home/Home'));
 const AboutOwner = React.lazy(() => import('../AboutOwner/AboutOwner'));
 const Service = React.lazy(() => import('../Service/Service'));
@@ -34,6 +35,9 @@ function Content(props) {
             </section> 
             <section id='ContactUs'>
                 <ContactUs />
+            </section>
+            <section id='Footer'>
+                <Footer />
             </section>
         </Suspense>
     );

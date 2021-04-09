@@ -14,7 +14,6 @@ function UserStatus() {
 
     const CheckUserStatus = () =>{
         firebase.auth().onAuthStateChanged(function(user) {
-            // console.log(user);
             if (user) {
             dispatch(setLogin());
             window.localStorage.setItem('isLoading',isLogin);

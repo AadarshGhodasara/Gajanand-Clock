@@ -1,10 +1,9 @@
-import React , { useState } from 'react';
+import React , { useEffect, useState } from 'react';
 import './ShowClockImages.css';
 import useStore from '../../Components/hooks/useStore';
 import {Button} from 'react-bootstrap';
 import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';
-import history from '../../Components/History'
 import Card from '../../Components/Card'
 function ShowClockImages() {
 
@@ -16,53 +15,37 @@ function ShowClockImages() {
     const ShowMoreImg = () => {
         setNumOfImg(numOfImg+4);
     }
+    useEffect(()=>{
+        setNumberOfClockImages()
+    },[])
+
+    const setNumberOfClockImages = () => {
+        if(window.innerWidth<600){
+            setNumOfImg(3)
+        }
+        else if(window.innerWidth>600 && window.innerWidth<1200){
+            setNumOfImg(4)
+        }
+        else if(window.innerWidth>1200){
+            setNumOfImg(3)
+        } 
+    }
+
+    window.addEventListener('resize',setNumberOfClockImages)
 
     return(
         <div className='show-clock-body'>
             <div className='show-clock-header'>
                 <label className='Show-Clock-header-text'><strong>Clock Modal</strong></label>
+                <div className='showClock-header-hr'>
+                    <hr style={{borderTop:'5px solid #00c6a7'}}></hr>
+                </div>
             </div>
             <div className='show-clock-tag'>
                 <div className='clock-img-grid'>
                     { docs && docs.slice(0,numOfImg).map(doc => (
-
-                        <Card state={doc} />
-                        // <div className='img-wrap' key={doc.id}>
-                        //     <img src={doc.url} alt='uploaded pic' />
-                        // </div>
-                        // <div className="card_layout"  key={doc.id}>
-                        //     {
-                        //         console.log('id===>',doc)
-                        //     }
-                        //     <div className="card__inner">
-                        //         <div className="card__face card__face--front ">
-                        //             <img src={doc.url} alt='uploaded pic' />
-                        //             {/* <img src="./logo192.png" alt="" className="pp" /> */}
-                        //         </div>
-                        //         <div className="card__face card__face--back">
-                        //             <div className="card__content">
-                        //                 <div className="card__header">
-                        //                     <img src={doc.url} alt='uploaded pic' />
-                        //                     {/* <img src="./logo192.png" alt="" className="pp" /> */}
-                        //                     {/* <h2>Tyler Potts</h2> */}
-                        //                 </div>
-                        //                 <div className="card__body">
-                        //                     <h3>Clock Number</h3>
-                        //                     <button className='btn btn-primary' style={{width:'100%'}} 
-                        //                         onClick={
-                        //                             ()=>{
-                        //                                 console.log('PROPS SEND=>',doc)
-                        //                                 history.push({
-                        //                                     pathname:'/EditProductDetails',
-                        //                                     state:{doc}
-                        //                                 })
-                        //                             }}>ADD TO CART</button>
-                        //                 </div>
-                        //             </div>
-                        //         </div>
-                        //     </div>
-                        // </div>
-                ))}
+                        <Card key={doc.url} state={doc} />
+                    ))}
                 </div>
                 { isLoading  && <LoaderModel text='Photo loading...'  /> }
             </div>

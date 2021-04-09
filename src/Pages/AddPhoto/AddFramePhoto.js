@@ -54,7 +54,6 @@ class AddPhoto extends React.Component {
                 collectionRef.add({ url , createAt }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
-                        console.log('IDDD =>',this.state.imageId);
                     }
                 );
                 Swal.fire(
@@ -72,7 +71,6 @@ class AddPhoto extends React.Component {
               });
             this.setState({frameUrl:'',isUpload:null});
         }
-        console.log('===> ',this.state.url);
     }
 
     deleteImg = () => {

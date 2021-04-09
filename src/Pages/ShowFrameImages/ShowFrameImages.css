@@ -1,46 +1,36 @@
 .show-frame-body{
-    /* height: 100vh; */
-    /* background-color: aqua;  */
-    /* background-color: ; */
+    width: 100vw;
     padding: 2% 5% 2% 5%;
-    background-color: black;
+    background-color: #f4f5f7;
 }
 .show-frame-header{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 1%;
-    /* background-color: red; */
+    margin: 4% 0%;
 }
 .Show-frame-header-text{
     font-size: calc(20px + 2vmin);
-    color: white;
+    color: #000;
 }
 .show-frame-tag{
     display: flex;
     justify-content: center;
-    /* height: 70vh; */
-    /* background-color: black; */
 }
 /* Grid Outter Tag */
 .frame-img-grid{
-    
-    /* background-color: red; */
     width: 85%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* grid: 300px / auto auto auto; */
-    /* grid-auto-rows: 300px; */
-    /* grid-auto-rows: 40vh; */
-    /* grid-template-rows: 300px 300px 300px; */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
 }
 .frame-img-wrap{
     overflow: hidden;
     padding: 50% 0;
     position: relative;
     width: 95%;
-    /* background-color: #0099ff; */
     margin: 2%;
 }
 
@@ -63,7 +53,10 @@
     display: flex;
     justify-content: center;
 }
-
+.showFrame-header-hr{
+    margin-left:1%;
+    width:6%;
+}
 
 
 @media screen and (min-width: 600px) {
@@ -83,4 +76,8 @@
     .frame-img-grid{
         grid-template-columns: 1fr ;
     } 
+    .showFrame-header-hr{
+        margin-left:1%;
+        width:12%;
+    }
 }

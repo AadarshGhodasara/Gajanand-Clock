@@ -1,0 +1,23 @@
+/* .nav-link {
+    display: inline;
+    color: rgb(0,0,0) !important;
+  } */
+.search-bar{
+    width: 35%;
+}  
+@media only screen and (max-width: 768px) {
+    .tableBody{
+        padding: 0%;
+    }
+    .search-bar{
+        width: 60%;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .tableBody{
+        padding: 5%;
+    }
+    .search-bar{
+        width: 35%;
+    }
+}

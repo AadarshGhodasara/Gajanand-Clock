@@ -1,15 +1,17 @@
 import React from 'react';
 import './AddPhotoHeader.css';
+import white_back from '../../Components/img/white_back.svg'
+import black_back from '../../Components/img/black_back.svg'
 import history from '../../Components/History';
 function AddPhotoHeader({ text , clock }) {
     const goback = () => {
         // console.log('back');
-        history.push({pathname:'/home'});
+        history.goBack();
     }
     return(
         <div className={clock ? 'addclockphoto-header-tag' : 'addframephoto-header-tag' }>
             <div className='first-tag' onClick={goback} >
-                <img src={clock ? './white_back.svg' : './black_back.svg'} alt='back icon' />
+                <img src={clock ? white_back : black_back} alt='back icon' />
             </div>
             <div className='middle-tag'>
                 <label className='addphoto-header-text'>
