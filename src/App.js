@@ -18,6 +18,7 @@ const UserAndAdminProfile = React.lazy(() => import('./Pages/UserAndAdminProfile
 const Cart = React.lazy(() => import('./Pages/Cart/Cart'));
 const ProductHistory = React.lazy(() => import('./Pages/UserProductHistory/ProductHistory'));
 const AdminOrder = React.lazy(() => import('./Pages/AdminGetOrder/AdminOrder'));
+const ForgotPassword = React.lazy(() => import('./Pages/ForgotPassword/ForgotPassword'));
 // const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
 // const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
 const ShowUserDetails = React.lazy(() => import('./Pages/ShowUserDetails/ShowUserDetails'));
@@ -46,6 +47,9 @@ class App extends React.Component{
             </Route>
             <Route  path="/signUp">
                 <SignUp  />
+            </Route>
+            <Route  path="/forgotPassword">
+                <ForgotPassword  />
             </Route>
             <Route  path="/User/Cart/:id">
                 <Cart  />

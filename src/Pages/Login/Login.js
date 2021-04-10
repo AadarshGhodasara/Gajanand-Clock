@@ -10,13 +10,16 @@ import { useDispatch } from 'react-redux';
 import {setLogin} from '../../Components/action/setLogged';
 import Swal from 'sweetalert2';
 import Link from '@material-ui/core/Link';
+import LoaderModel from '../../Components/Loader/LoaderModal';
 
 const Login = () => {
     const [ email , setEmail ] = useState('');
     const [ pass , setPass ] = useState('');
+    const [ isLogin , setIsLogin ] = useState(false);
     const dispatch = useDispatch();
     
     function  handleLoginEvent(){
+        setIsLogin(true)
         // console.log(pass,'==',email)
         if(email && pass){
             fire.auth().signInWithEmailAndPassword(email,pass)
@@ -28,6 +31,8 @@ const Login = () => {
                             icon: 'error',
                             title: 'Oops...',
                             text: 'Email Not Verified...',
+                          }).then(()=>{
+                              setIsLogin(false)
                           })
                         
                     }else{
@@ -38,6 +43,7 @@ const Login = () => {
                           ).then(()=>{
                             //   console.log('USER===>',CurrentUser.uid)
                               window.localStorage.setItem('userId',CurrentUser.uid);
+                              setIsLogin(false)
                             // if(email==='nilesh.gajanand03@gmail.com'&&pass==='Admin@0000'){
                                 dispatch(setLogin());    
                             // }  
@@ -51,6 +57,8 @@ const Login = () => {
                     icon: 'error',
                     title: 'Oops...',
                     text: error.message,
+                  }).then(()=>{
+                    setIsLogin(false)
                   })
             })   
         }else{
@@ -58,6 +66,8 @@ const Login = () => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'enter all details',
+              }).then(()=>{
+                setIsLogin(false)
               })
         }
     }
@@ -94,10 +104,19 @@ const Login = () => {
                         {/* <input type="Submit" onClick={submitLogin}  /> */}
                     </div>
                     <div className='signUpLabelTag'>
+                            <div>
                             <Link href="/signUp" variant="body2">
                                 Don't have an account? Sign Up
+                            </Link>                                
+                            </div>
+                            <div>
+                            <Link href="/forgotPassword" variant="body2">
+                                Forgot Your Password?
                             </Link>
-                        </div>
+                            </div>
+
+                    </div>
+                    { isLogin && <LoaderModel text='Login Processing...'  /> }
                 </div>
             </div>
             </div>
