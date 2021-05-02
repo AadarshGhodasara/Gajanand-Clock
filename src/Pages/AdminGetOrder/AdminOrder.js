@@ -269,7 +269,6 @@ export default function AdminOrder() {
             </div>
           </div>
         </div>
-        <div className="row py-5 p-4 bg-white rounded shadow-sm  d-flex justify-content-center align-items-center"></div>
       </div>
       <div className="show-Product-footer">
         <Footer />

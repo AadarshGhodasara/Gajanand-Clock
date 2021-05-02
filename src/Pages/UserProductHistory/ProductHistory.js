@@ -231,16 +231,14 @@ export default function ProductHistory() {
                 </table>
               </div>
             </div>
-            <div class="p-3 pl-5 mb-2 bg-light text-dark w-100">
-              <label className="text-danger">
+            <div class="p-3 pl-5 mb-2 bg-danger text-dark w-100">
+              <label className="text-white">
                 * After Shipping you cannot cancel Order.
                 <br />* After Placeing order 2-3 day order will be shipphing.
               </label>
             </div>
-            {/* <h5 className='text-center' style={{backgroundColor:'red'}}>You Can't Cancel Order After Order In Transition...</h5> */}
           </div>
         </div>
-        <div className="row py-5 p-4 bg-white rounded shadow-sm  d-flex justify-content-center align-items-center"></div>
         {isLoading && <LoaderModal text="Product Loading..." />}
       </div>
       <div className="user-product-history-footer">
