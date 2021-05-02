@@ -234,9 +234,9 @@ export default class HookExample extends React.Component {
     componentDidUpdate(){
         console.log('componentDidUpdate...');
     }
-    componentWillUnmount(){
-        console.log('ComponentWillUnmount...');
-    }
+    // componentWillUnmount(){
+    //     console.log('ComponentWillUnmount...');
+    // }
     shouldComponentUpdate(){
         console.log('shouldComponentUpdate...');
         return true;

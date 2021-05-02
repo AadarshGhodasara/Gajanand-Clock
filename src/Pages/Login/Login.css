@@ -36,9 +36,20 @@
     /* height: 6vh; */
     align-items: flex-start;
     flex-direction: column;
+    /* background-color: red; */
 }
 .label-css{
     color: white;
+}
+/* .ant-input-lg{
+width: 45vw;
+} */
+.ant-input{
+    /* background-color: red; */
+    border: none;
+}
+.ant-input:focus{
+    outline: none !important;
 }
 
 .inputField{
@@ -62,11 +73,14 @@ input[type=Submit]{
 /* .signUpLabel{
     font-size: calc(7px + 1vmin);
 } */
+    .ant-input-lg{
+        width: 80% !important;
+    }
 @media screen and (min-width: 600px) {
     .tabelTag{
         width: 60%;
         height: 55vh;
-    }
+    }    
 
 }
 @media screen and (min-width: 900px) {
@@ -93,8 +107,6 @@ input[type=Submit]{
         width: 95%;
         height: 50vh;
     }
-
- 
   }
 
  .sign-up-btn-css{

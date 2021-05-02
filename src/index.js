@@ -6,6 +6,7 @@ import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import isLoaggedReducer from './Components/reducer/isLogged';
+import Not from './Pages/NotFoundPage/NotFoundPage'
 import Footer from './Components/Footer/Footer'
 const store = createStore(
   isLoaggedReducer,
@@ -16,7 +17,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>
-  // <Footer />
+  // <Not />
   ,
   document.getElementById('root')
 );

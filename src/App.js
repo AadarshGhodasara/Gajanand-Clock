@@ -24,7 +24,7 @@ const ForgotPassword = React.lazy(() => import('./Pages/ForgotPassword/ForgotPas
 const ShowUserDetails = React.lazy(() => import('./Pages/ShowUserDetails/ShowUserDetails'));
 const EditProductDetails = React.lazy(() => import('./Pages/EditProductDetails/EditProductDetails'));
 const ShowProductDetails = React.lazy(() => import('./Pages/ShowProductDetails/ShowProductDetails'));
-
+const NotFoundPage = React.lazy(() => import('./Pages/NotFoundPage/NotFoundPage'));
 
 class App extends React.Component{
   render(){
@@ -74,6 +74,9 @@ class App extends React.Component{
             </Route>
             <Route  path="/:type/Details/:id">
                 <ShowProductDetails />
+            </Route>
+            <Route>
+              <NotFoundPage />
             </Route>
           </Switch>
         </Router>

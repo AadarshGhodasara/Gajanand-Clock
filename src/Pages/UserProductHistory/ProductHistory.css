@@ -1,10 +1,14 @@
+/* .user-product-history-footer{
+    margin-top: 4%;
+} */
+
 @media only screen and (max-width: 768px) {
     .productHistoryTableBody{
-        padding: 0%;
+        padding: 5%;
     }
 }
 @media only screen and (min-width: 768px) {
     .productHistoryTableBody{
-        padding: 5%;
+        padding: 3%;
     }
 }

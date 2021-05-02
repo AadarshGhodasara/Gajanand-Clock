@@ -1,76 +1,67 @@
-.addframephoto-header-tag{
-    background-color: aqua;
-    /* color: white; */
-    height: 15vh;
+.addframephoto-header-tag {
+  background-color: aqua;
+  /* color: white; */
+  height: 15vh;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.addclockphoto-header-tag{
-    background-color: black;
-    color: white;
-    height: 15vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.addclockphoto-header-tag {
+  background-color: #0f1521;
+  color: white;
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.first-tag{
-    width: 20%;
-    /* background-color: red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.first-tag {
+  width: 20%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.middle-tag{
-    width: 50%;
-    /* background-color: red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.addphoto-header-text{
-    font-size: 4vw;
-    font-family: 'Montserrat', sans-serif;
+.middle-tag {
+  width: 50%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.first-tag img{
-    width: 60%;
-    height: 60%;
+.addphoto-header-text {
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
 }
 
+.first-tag img {
+  width: 60%;
+  height: 60%;
+}
 
 @media screen and (max-width: 600px) {
-    
-    .addphoto-header-text{
-        font-size: 5vw;
-    }
+  .addphoto-header-text {
+    font-size: 5vw;
+  }
 }
- @media screen and (min-width: 600px) {
-  
-    .addphoto-header-text{
-        font-size: 5vw;
-    }
+@media screen and (min-width: 600px) {
+  .addphoto-header-text {
+    font-size: 5vw;
+  }
 }
 @media only screen and (min-width: 768px) {
-  
-    .addphoto-header-text{
-        font-size: 3.5vw;
-    }
+  .addphoto-header-text {
+    font-size: 3.5vw;
+  }
 }
 @media screen and (min-width: 900px) {
-    
-    
-    .addphoto-header-text{
-        font-size: 3.2vw;
-    }
+  .addphoto-header-text {
+    font-size: 3.2vw;
+  }
 }
 @media screen and (min-width: 1200px) {
-
-    .addphoto-header-text{
-        font-size: 2.5vw;
-    }
-
-} 
+  .addphoto-header-text {
+    font-size: 2.5vw;
+  }
+}
