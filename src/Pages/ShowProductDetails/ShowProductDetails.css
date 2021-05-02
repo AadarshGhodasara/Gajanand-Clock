@@ -63,10 +63,15 @@
     background-color: black;
     font-family: 'Times New Roman', Times, serif;
 }
+.show-Product-footer{
+    margin-top: 4%;
+}
 
 @media screen and (max-width: 800px) {
     .body-show-product-details{
         flex-direction: column;
+        height: 100vh;
+        overflow: auto;
     }
     .first-img-tag{
         width: 90vw;
@@ -77,6 +82,10 @@
     .second-content-tag{
         width: 90vw;
     }
+    .show-Product-footer{
+        margin-top: 4%;
+    }
+    
   }
 @media screen and (min-width: 800px) {
     .first-clock-img-tag{

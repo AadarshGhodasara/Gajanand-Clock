@@ -54,6 +54,17 @@ input[type=Submit]{
     align-items: center;
     justify-content: center;
 }
+/* .ant-input-lg{
+    width: 45vw;
+    } */
+    .ant-input{
+        /* background-color: red; */
+        border: none;
+    }
+    .ant-input:focus{
+        outline: none !important;
+    }
+
 
 @media screen and (min-width: 600px) {
     .SignUpTag{
@@ -65,6 +76,7 @@ input[type=Submit]{
         height: 115vh;
         
     }
+   
 
 }
 @media screen and (min-width: 900px) {
@@ -72,6 +84,7 @@ input[type=Submit]{
         width: 50%;
         height: 95vh;
     }
+   
 }
 @media screen and (min-width: 1200px) {
     .SignUpTag{
@@ -79,6 +92,7 @@ input[type=Submit]{
         width: 43%;
         height: 100vh;
     }
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -90,8 +104,6 @@ input[type=Submit]{
     .SignUpOutterTag{
         height: 110vh;
     }
-
- 
   }
 
  .sign-up-btn-css{

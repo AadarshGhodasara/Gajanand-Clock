@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
-import {  Nav  } from 'react-bootstrap';
 import brg2 from '../../Components/img/pic2.png'
 import brg3 from '../../Components/img/pic3.png'
 import {Carousel} from 'react-bootstrap'
-import background from "../../Components/img/hero-side-bg.png"; 
-const { Link } = Nav;
+import background from "../../Components/img/hero-side-bg.png";
 
 
 export default function Home() {
@@ -29,7 +27,7 @@ export default function Home() {
         window.scrollTo(0,725)
     }
     const handleContactUsEvent = () => {
-        window.scrollTo(0,3800)
+        window.scrollTo(0,3650)
     }
     window.addEventListener('resize',changeWidth)
     return (

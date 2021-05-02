@@ -2,22 +2,27 @@
     display: inline;
     color: rgb(0,0,0) !important;
   } */
-.search-bar{
-    width: 35%;
-}  
+.search-bar {
+  width: 35%;
+}
+.admin-order-footer {
+  margin-top: 0%;
+}
+
 @media only screen and (max-width: 768px) {
-    .tableBody{
-        padding: 0%;
-    }
-    .search-bar{
-        width: 60%;
-    }
+  .tableBody {
+    padding: 5%;
+    background-color: red;
+  }
+  .search-bar {
+    width: 60%;
+  }
 }
 @media only screen and (min-width: 768px) {
-    .tableBody{
-        padding: 5%;
-    }
-    .search-bar{
-        width: 35%;
-    }
+  .tableBody {
+    padding: 3%;
+  }
+  .search-bar {
+    width: 35%;
+  }
 }
