@@ -34,7 +34,9 @@ export default function AdminOrder() {
       }
 
       tempData.map((product) => {
-        tempOrder = tempOrder + (Object.values(product[0]).length - 1);
+        for (let i = 0; i < Object.values(product).length; i++) {
+          tempOrder = tempOrder + (Object.values(product[i]).length - 1);
+        }
       });
       setIsLoading(false);
     });

@@ -45,8 +45,8 @@ function AboutOwner() {
           data-aos="fade-left"
           data-aos-easing="ease-in-out"
         >
-          <Image
-            src="user.png"
+          <img
+            src="owner.jpg"
             thumbnail
             className="Owner-img"
             width="350"
