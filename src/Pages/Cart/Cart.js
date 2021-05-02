@@ -439,7 +439,7 @@ export default function Cart() {
                   <div className="col-md-5 mb-3">
                     <label for="phoneNumber">Phone No.</label>
                     <input
-                      type="number"
+                      type="tel"
                       value={phoneNumber !== "-" ? phoneNumber : ""}
                       className="form-control"
                       id="zip"

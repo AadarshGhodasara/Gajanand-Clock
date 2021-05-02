@@ -74,7 +74,7 @@ export default function ProductHistory() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "You Cannot Cencle Order because order in transition.",
+          text: "You Cannot Cancel Order because order in transition.",
         });
       }
     } else {

@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ContactUs.css";
 import { Form, Button } from "react-bootstrap";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 import AOS from "aos";
+import LoaderModal from "../../Components/Loader/LoaderModal";
 import "aos/dist/aos.css";
 
 const ContactUs = () => {
+  const [isMailSent, setIsMailSent] = useState(false);
   useEffect(() => {
     AOS.init({
       offset: 200,
@@ -15,6 +17,7 @@ const ContactUs = () => {
   });
   const handleSendEmailEvent = (e) => {
     e.preventDefault();
+    setIsMailSent(true);
     emailjs
       .sendForm(
         process.env.REACT_APP_SERVICE_ID,
@@ -29,10 +32,13 @@ const ContactUs = () => {
             "Send Message",
             "Your Mail has been send. Thank you for connecting.",
             "success"
-          );
+          ).then(() => {
+            setIsMailSent(false);
+          });
         },
         (error) => {
           console.log(error.text);
+          setIsMailSent(false);
         }
       );
     e.target.reset();
@@ -107,6 +113,7 @@ const ContactUs = () => {
           ></iframe>
         </div>
       </div>
+      {isMailSent && <LoaderModal text="Mail Send processing.." />}
     </div>
   );
 };
