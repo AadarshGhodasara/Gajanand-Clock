@@ -24,10 +24,10 @@ function Content(props) {
       </section>
       {/* <section id="ShowClockImages">
         <ShowClockImages />
-      </section>
+      </section>*/}
       <section id="ShowFrameImages">
         <ShowFrameImages />
-      </section> */}
+      </section>
       <section id="ContactUs">
         <ContactUs />
       </section>

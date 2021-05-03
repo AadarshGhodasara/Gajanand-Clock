@@ -14,11 +14,11 @@ export default function ShowProductDetails() {
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   useEffect(async () => {
+    window.scrollTo(0, 0);
     setIsLoading(true);
     const CurrentUser = firebase.auth().currentUser;
     if (CurrentUser?.uid === "CymHA6isY3aNB4eKcWji4RDYij73") {
       setIsAdmin(true);
-      console.log("******************************************* TRUE");
     }
     const docRef = store.collection(type).doc(id);
     await docRef
@@ -100,9 +100,19 @@ export default function ShowProductDetails() {
           <h2>Best {ProductObject.productType} For Home Decoration</h2>
           <p className="second-content-tag-p">
             {ProductObject ? ProductObject.productDetail : ""}
-            The most important thing to remember when decorating with
-            wall-clocks is to choose something that you feel represents you and
-            in some way enhances the décor of your room,
+            {ProductObject?.productType === "clock" ? (
+              <label>
+                The most important thing to remember when decorating with
+                wall-clocks is to choose something that you feel represents you
+                and in some way enhances the décor of your room
+              </label>
+            ) : (
+              <label>
+                A picture frame is a protective and decorative edging for a
+                picture. both sets the picture apart from its surroundings and
+                aesthetically integrates it with them.
+              </label>
+            )}
             {/* A product detail page (PDP) is a web page on an eCommerce site that presents the description of a specific product in view. The details displayed often include size, color, price, shipping information, reviews, and other relevant information customers may want to know before making a purchase. Typically, this information is presented alongside an actual photo of the item, as well as an “add to cart” button. */}
           </p>
           <p className="mb-3 text-danger">

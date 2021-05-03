@@ -10,13 +10,14 @@ import "aos/dist/aos.css";
 
 function ShowClockImages() {
   const [numOfImg, setNumOfImg] = useState(4);
+  const [tempNumOfImg, setTempNumOfImg] = useState(0);
   const { docs } = useStore("Clock");
 
   const ShowMoreImg = () => {
-    setNumOfImg(numOfImg + 4);
+    setNumOfImg(numOfImg + tempNumOfImg);
   };
   const ShowLessImg = () => {
-    setNumOfImg(numOfImg - 4);
+    setNumOfImg(numOfImg - tempNumOfImg);
   };
 
   useEffect(() => {
@@ -30,10 +31,13 @@ function ShowClockImages() {
   const setNumberOfClockImages = () => {
     if (window.innerWidth < 600) {
       setNumOfImg(3);
+      setTempNumOfImg(3);
     } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
       setNumOfImg(4);
+      setTempNumOfImg(4);
     } else if (window.innerWidth > 1200) {
       setNumOfImg(3);
+      setTempNumOfImg(3);
     }
   };
 

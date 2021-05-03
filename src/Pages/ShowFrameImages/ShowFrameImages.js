@@ -9,11 +9,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 function ShowFrameImages({ text, styles }) {
   const [numOfImg, setNumOfImg] = useState(4);
+  const [tempNumOfImg, setTempNumOfImg] = useState(0);
   const { docs } = useStore("Frame");
-
-  const ShowMoreImg = () => {
-    setNumOfImg(numOfImg + 2);
-  };
+  var temp;
 
   useEffect(() => {
     AOS.init({
@@ -26,11 +24,21 @@ function ShowFrameImages({ text, styles }) {
   const setNumberFrameOfImages = () => {
     if (window.innerWidth < 600) {
       setNumOfImg(3);
+      setTempNumOfImg(3);
     } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
       setNumOfImg(4);
+      setTempNumOfImg(4);
     } else if (window.innerWidth > 1200) {
       setNumOfImg(3);
+      setTempNumOfImg(3);
     }
+  };
+  const ShowMoreImg = () => {
+    console.log("temp===>", tempNumOfImg);
+    setNumOfImg(numOfImg + tempNumOfImg);
+  };
+  const ShowLessImg = () => {
+    setNumOfImg(numOfImg - tempNumOfImg);
   };
 
   window.addEventListener("resize", setNumberFrameOfImages);
@@ -65,6 +73,11 @@ function ShowFrameImages({ text, styles }) {
         {numOfImg < docs.length && (
           <Button variant="primary" size="lg" onClick={ShowMoreImg}>
             View More
+          </Button>
+        )}
+        {numOfImg >= docs.length && (
+          <Button variant="primary" size="lg" onClick={ShowLessImg}>
+            View less
           </Button>
         )}
       </div>
