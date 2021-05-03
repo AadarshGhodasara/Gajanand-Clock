@@ -14,7 +14,7 @@ import "rc-color-picker/assets/index.css";
 import "antd/dist/antd.css";
 import { Steps, Button, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-
+const Footer = React.lazy(() => import("../../Components/Footer/Footer"));
 const { Step } = Steps;
 const types = ["image/png", "image/jpeg"];
 
@@ -329,6 +329,9 @@ class AddPhoto extends React.Component {
 
           {isUpload && <LoaderModel text="Photo Uploading..." />}
           {isDelete && <LoaderModel text="Photo Deleteing..." />}
+        </div>
+        <div className="mt-4">
+          <Footer />
         </div>
       </>
     );
