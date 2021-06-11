@@ -175,11 +175,12 @@ export default function EditProductDetails(props) {
             />
           </div>
           <div className="form-group">
-            <input
+            <textarea
               type="text"
               className="form-control form-control-lg"
               placeholder="Enter Product Details"
               name="username"
+              style={{height:'15vh'}}
               value={productDetail}
               onChange={(e) => setProductDetail(e.target.value)}
             />

@@ -233,8 +233,8 @@ export default function ProductHistory() {
             </div>
             <div class="p-3 pl-5 mb-2 bg-danger text-dark w-100">
               <label className="text-white">
-                * After Shipping you cannot cancel Order.
-                <br />* After Placeing order 2-3 day order will be shipphing.
+                * After transition of order you cannot cancel order.
+                <br />* After confirmation of order, item will be shipped within 2-3 business days.
               </label>
             </div>
           </div>
