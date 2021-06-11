@@ -48,6 +48,7 @@ function AboutOwner() {
           <img
             src="owner.jpg"
             thumbnail
+            alt='ownerImage'
             className="Owner-img"
             width="350"
             height="350"

@@ -102,15 +102,15 @@ export default function ShowProductDetails() {
             {ProductObject ? ProductObject.productDetail : ""}
             {ProductObject?.productType === "clock" ? (
               <label>
-                The most important thing to remember when decorating with
+                {/* The most important thing to remember when decorating with
                 wall-clocks is to choose something that you feel represents you
-                and in some way enhances the décor of your room
+                and in some way enhances the décor of your room. */}
               </label>
             ) : (
               <label>
-                A picture frame is a protective and decorative edging for a
+                {/* A picture frame is a protective and decorative edging for a
                 picture. both sets the picture apart from its surroundings and
-                aesthetically integrates it with them.
+                aesthetically integrates it with them. */}
               </label>
             )}
             {/* A product detail page (PDP) is a web page on an eCommerce site that presents the description of a specific product in view. The details displayed often include size, color, price, shipping information, reviews, and other relevant information customers may want to know before making a purchase. Typically, this information is presented alongside an actual photo of the item, as well as an “add to cart” button. */}

@@ -331,7 +331,7 @@ export default function UserAndAdminProfile() {
                   {console.log("userImageUrl===>", userImageUrl)}
                   <img
                     src={userImageUrl !== "none" ? userImageUrl : userImage}
-                    alt="User Image"
+                    alt="User_Image"
                     className="user-img"
                   />
                   {/* <button className='btn btn-primary mt-5' >Edit Image</button> */}

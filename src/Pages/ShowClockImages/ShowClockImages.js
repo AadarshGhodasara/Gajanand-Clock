@@ -22,7 +22,7 @@ function ShowClockImages() {
 
   useEffect(() => {
     AOS.init({
-      offset: 200,
+      offset: 180,
       duration: 1000,
     });
     setNumberOfClockImages();

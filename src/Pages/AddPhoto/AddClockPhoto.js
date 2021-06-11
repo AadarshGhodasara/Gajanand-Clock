@@ -267,11 +267,12 @@ class AddPhoto extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <input
+                <textarea
                   type="text"
                   className="form-control form-control-lg"
                   placeholder="Enter Product Details"
                   name="username"
+                  style={{height:'15vh'}}
                   value={productDetail}
                   onChange={(e) =>
                     this.setState({ productDetail: e.target.value })

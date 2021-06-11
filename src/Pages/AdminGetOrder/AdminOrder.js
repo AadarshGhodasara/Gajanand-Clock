@@ -230,6 +230,8 @@ export default function AdminOrder() {
                                 } else {
                                   const temp = notFoundOrderCount + 1;
                                   notFoundOrderCount = notFoundOrderCount + 1;
+                                  console.log('TEMP=>',temp);
+                                  console.log('Total=>',totalOrders);
                                   if (temp === totalOrders) {
                                     return (
                                       <tr>
