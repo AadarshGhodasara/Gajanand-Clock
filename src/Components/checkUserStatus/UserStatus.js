@@ -26,7 +26,7 @@ function UserStatus() {
     }
     CheckUserStatus();
     return(
-        <div style={{height:window.innerHeight}} className='loader-tag'>
+        <div style={{height:window.innerHeight, backgroundColor:'white'}} className='loader-tag'>
             <LoaderModal text='Checking User Status...' />
         </div>
     );
