@@ -182,7 +182,7 @@ class AddPhoto extends React.Component {
       productType,
     } = this.state;
     return (
-      <>
+      <div style={{ backgroundColor: "white" }}>
         <AddPhotoHeader text="Add Product" clock={true} />
         <div className="addPhoto-body">
           {/* <div className='addPhoto-outter-tag'>              
@@ -334,7 +334,7 @@ class AddPhoto extends React.Component {
         <div className="mt-4">
           <Footer />
         </div>
-      </>
+      </div>
     );
   }
 }
