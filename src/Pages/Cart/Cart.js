@@ -255,7 +255,7 @@ export default function Cart() {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "white" }}>
       <Header text={"Cart"} clock={true} />
       <div className="pb-5" style={{ fontFamily: "Montserrat,sans-serif" }}>
         <div className="container-fluid">
@@ -625,6 +625,6 @@ export default function Cart() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
