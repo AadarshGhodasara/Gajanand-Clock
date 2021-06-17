@@ -159,7 +159,7 @@ export default function EditProductDetails(props) {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "white" }}>
       <AddPhotoHeader text="Edit Product Details" clock={true} />
       <div className="container mt-5">
         <div className="w-75 mx-auto shadow p-5">
@@ -260,7 +260,7 @@ export default function EditProductDetails(props) {
       <div className="mt-5">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 
