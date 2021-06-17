@@ -11,6 +11,7 @@ const ContactUs = React.lazy(() => import("../ContactUs/ContactUs"));
 
 function Content(props) {
   return (
+    <div style={{ maxWidth: "100%", overflow: "hidden" }}>
     <Suspense fallback={<Loader text="Loading..." />}>
       <Header />
       <section id="Home" style={{backgroundColor:'white'}}>
@@ -35,6 +36,7 @@ function Content(props) {
         <Footer />
       </section>
     </Suspense>
+</div>
   );
 }
 
