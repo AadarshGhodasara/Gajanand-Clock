@@ -78,7 +78,7 @@ export default function ShowProductDetails() {
     }
   };
   return (
-    <>
+    <div style={{ backgroundColor: "white" }}>
       <Header text={"Product Details"} clock={true} />
       <div className="body-show-product-details">
         <div className="first-img-tag">
@@ -151,6 +151,6 @@ export default function ShowProductDetails() {
       <div className="admin-order-footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
