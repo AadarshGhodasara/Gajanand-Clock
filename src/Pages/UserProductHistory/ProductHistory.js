@@ -108,7 +108,7 @@ export default function ProductHistory() {
   };
 
   return (
-    <div style={{ width: "100%", fontFamily: "Montserrat,sans-serif" }}>
+    <div style={{ width: "100%", fontFamily: "Montserrat,sans-serif",backgroundColor: "white" }}>
       {/* <label>LOL</label> */}
       <Header text={"Order History"} clock={true} />
       <div className="pb-0">
