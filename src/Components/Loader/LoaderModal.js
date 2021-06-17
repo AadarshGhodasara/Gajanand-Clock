@@ -4,7 +4,7 @@ import "./LoaderModal.css";
 
 const Modal = ({ text }) => {
   return (
-    <div className="loader-first-tag" style={{ zIndex: "1" }}>
+    <div className="loader-first-tag" style={{ zIndex: "1",backgroundColor: "#cfcfcf" }}>
       <div className="loader-sec-tag">
         <img src={LoaderLogo} alt="React Logo" />
         <label className="loader-font-text">
