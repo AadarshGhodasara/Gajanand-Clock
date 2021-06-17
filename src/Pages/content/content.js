@@ -13,10 +13,10 @@ function Content(props) {
   return (
     <Suspense fallback={<Loader text="Loading..." />}>
       <Header />
-      <section id="Home">
+      <section id="Home" style={{backgroundColor:'white'}}>
         <Home />
       </section>
-      <section id="About">
+      <section id="About" style={{backgroundColor:'white'}}>
         <AboutOwner />
       </section>
       <section id="Service">
