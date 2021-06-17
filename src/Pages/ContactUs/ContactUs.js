@@ -20,10 +20,10 @@ const ContactUs = () => {
     setIsMailSent(true);
     emailjs
       .sendForm(
-        "service_c1haowq",
-        "template_hvxta7j",
+        'service_c1haowq',
+        'template_hvxta7j',
         e.target,
-        "user_PkGvOVMKJrZ3K5udlcntm"
+        'user_PkGvOVMKJrZ3K5udlcntm'
       )
       .then(
         (result) => {
