@@ -297,7 +297,7 @@ export default function UserAndAdminProfile() {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "white" }}>
       <Header text={"Profile"} clock={true} />
       <div className="shadow container mb-5">
         {!isEditProfile ? (
@@ -697,6 +697,6 @@ export default function UserAndAdminProfile() {
       <div className="profile-footer">
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
