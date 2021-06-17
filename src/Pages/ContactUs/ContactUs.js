@@ -20,10 +20,10 @@ const ContactUs = () => {
     setIsMailSent(true);
     emailjs
       .sendForm(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
+        "service_c1haowq",
+        "template_hvxta7j",
         e.target,
-        process.env.REACT_APP_USER_ID
+        "user_PkGvOVMKJrZ3K5udlcntm"
       )
       .then(
         (result) => {
