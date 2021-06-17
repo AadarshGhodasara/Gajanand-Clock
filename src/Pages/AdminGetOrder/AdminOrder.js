@@ -74,7 +74,7 @@ export default function AdminOrder() {
   };
 
   return (
-    <div style={{ width: "100%", fontFamily: "Montserrat,sans-serif" }}>
+    <div style={{ width: "100%", fontFamily: "Montserrat,sans-serif",backgroundColor: "white", }}>
       <Header text={"Orders"} clock={true} />
       <div className="pb-0">
         <div className="container-fluid">
